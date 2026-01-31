@@ -1,0 +1,9 @@
+POST http://localhost:8080/api/v1/quiz/generate-quiz
+Content-Type: application/json
+
+{
+  "topic": "World History",
+  "numberOfQuestions": 5,
+  "difficulty": "MEDIUM",
+  "numberOfOptions": 4
+}
