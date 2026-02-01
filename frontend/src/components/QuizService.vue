@@ -1,7 +1,9 @@
 <script>
+import QuizCards from "@/components/QuizCards.vue";
+
 export default {
   name: "QuizService",
-
+  components: {QuizCards},
   props: {
     topic: {
       type: String,
@@ -20,15 +22,14 @@ export default {
       required: true
     }
   },
-
   data() {
     return {
       questions: [],
       loading: false,
-      error: null
+      error: null,
+      generated: false
     }
   },
-
   mounted() {
     this.getQuestions();
   },
@@ -62,6 +63,7 @@ export default {
       .then(data => {
         this.questions = data.questions;
         this.loading = false;
+        this.generated = true;
         console.log("Quiz Questions:", this.questions);
       })
       .catch(error => {
@@ -75,7 +77,7 @@ export default {
 </script>
 
 <template>
-  <div class="quiz-service">
+  <div v-if="!generated" class="quiz-service">
     <div v-if="loading" class="loading">
       <div class="spinner"></div>
       <p>Generating your quiz...</p>
@@ -85,6 +87,10 @@ export default {
       <p>Error: {{ error }}</p>
       <button @click="getQuestions" class="retry-btn">Try Again</button>
     </div>
+  </div>
+
+  <div v-else>
+    <quiz-cards :questions="questions" />
   </div>
 </template>
 

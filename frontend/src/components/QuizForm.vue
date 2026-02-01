@@ -5,7 +5,6 @@ import QuizService from "@/components/QuizService.vue";
 export default {
   name: "QuizForm",
   components: {QuizConfigurationSummary, QuizService},
-
   data() {
     return {
       topic: '',
@@ -19,14 +18,12 @@ export default {
       optionsRange: {min: 2, max: 6}
     }
   },
-
   computed: {
     isFormValid() {
       return this.topic.trim() !== '' &&
              this.difficulty !== '';
     }
   },
-
   methods: {
     generateQuiz() {
       if (this.isFormValid) {
@@ -53,7 +50,7 @@ export default {
 <template>
   <div id="app">
     <header class="app-header">
-      <h1>Generate Quiz</h1>
+      <h1>QuizGEN</h1>
       <p class="subtitle">Create custom quizzes with AI-powered questions</p>
     </header>
 

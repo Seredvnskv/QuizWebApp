@@ -1,7 +1,6 @@
 <script>
 export default {
   name: "QuizConfigurationSummary",
-
   props: {
     topic: {
       type: String,
@@ -20,7 +19,6 @@ export default {
       required: true
     }
   },
-
   methods: {
     startQuiz() {
       this.$emit('start-quiz');
