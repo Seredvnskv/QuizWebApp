@@ -14,7 +14,7 @@ export default {
       showQuiz: false,
       showQuizService: false,
       showBackButton: true,
-      questionsRange: {min: 5, max: 25},
+      questionsRange: {min: 1, max: 25},
       optionsRange: {min: 2, max: 6}
     }
   },

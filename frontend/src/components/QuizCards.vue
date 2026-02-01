@@ -16,7 +16,7 @@ export default {
   },
   mounted() {
     this.shuffleQuestions();
-    console.log(this.shuffledQuestions);
+    //console.log(this.shuffledQuestions);
   },
   methods: {
     shuffleQuestions() {
@@ -50,15 +50,29 @@ export default {
     },
 
     submitQuiz() {
-      let score = 0;
+      let quizSummary = {
+        totalQuestions: this.shuffledQuestions.length,
+        score: 0,
+        correct: 0,
+        wrong: 0,
+        unanswered: 0
+      };
 
       this.shuffledQuestions.forEach((question, index) => {
-        if (question.options[this.selectedAnswers[index]]?.isCorrect) {
-          score++;
+        if (this.selectedAnswers[index] === undefined) {
+          quizSummary.unanswered++;
+        } else {
+          const selectedOption = question.options[this.selectedAnswers[index]];
+          if (selectedOption.isCorrect) {
+            quizSummary.correct++;
+          } else {
+            quizSummary.wrong++;
+          }
         }
       });
 
-      console.log(score);
+      quizSummary.score = ((quizSummary.correct / quizSummary.totalQuestions) * 100).toFixed(1);
+      this.$emit('quiz-finished', quizSummary);
     }
   }
 }

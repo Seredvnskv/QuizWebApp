@@ -1,9 +1,10 @@
 <script>
 import QuizCards from "@/components/QuizCards.vue";
+import QuizResult from "@/components/QuizResult.vue";
 
 export default {
   name: "QuizService",
-  components: {QuizCards},
+  components: {QuizResult, QuizCards},
   props: {
     topic: {
       type: String,
@@ -27,7 +28,9 @@ export default {
       questions: [],
       loading: false,
       error: null,
-      generated: false
+      generated: false,
+      finished: false,
+      quizResults: null
     }
   },
   mounted() {
@@ -71,6 +74,11 @@ export default {
         this.error = error.message;
         this.loading = false;
       });
+    },
+    handleQuizFinished(results) {
+      this.quizResults = results;
+      this.finished = true;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
 }
@@ -90,7 +98,16 @@ export default {
   </div>
 
   <div v-else>
-    <quiz-cards :questions="questions" />
+    <quiz-cards
+        v-if="!finished"
+        :questions="questions"
+        @quiz-finished="handleQuizFinished"
+    />
+
+    <quiz-result
+        v-if="finished"
+        :results="quizResults"
+    />
   </div>
 </template>
 
