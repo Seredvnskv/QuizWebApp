@@ -69,7 +69,7 @@ QuizAI is a full-stack application that generates educational quizzes using AI. 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/QuizAI.git
+git clone https://github.com/Seredvnskv/QuizWebApp.git
 cd QuizAI
 ```
 
@@ -253,3 +253,5 @@ Deploy the `dist/` folder to:
 - Frontend: Delete `node_modules` and run `npm install` again
 - Backend: Run `mvn clean install -U` to force update dependencies
 
+## Author
+Sambor Seredyński

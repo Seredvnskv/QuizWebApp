@@ -75,10 +75,14 @@ export default {
         this.loading = false;
       });
     },
-    handleQuizFinished(results) {
+    quizFinished(results) {
       this.quizResults = results;
       this.finished = true;
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    resetQuiz() {
+      this.$emit('reset-quiz');
+       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
 }
@@ -101,12 +105,13 @@ export default {
     <quiz-cards
         v-if="!finished"
         :questions="questions"
-        @quiz-finished="handleQuizFinished"
+        @quiz-finished="quizFinished"
     />
 
     <quiz-result
         v-if="finished"
         :results="quizResults"
+        @reset-quiz="resetQuiz"
     />
   </div>
 </template>

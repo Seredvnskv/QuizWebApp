@@ -38,7 +38,7 @@ export default {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     },
 
-    handleStartQuiz() {
+    startQuiz() {
       this.showQuizService = true
       this.showBackButton = false
       window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -147,7 +147,7 @@ export default {
             :number-of-questions="numberOfQuestions"
             :difficulty="difficulty"
             :number-of-options="numberOfOptions"
-            @start-quiz="handleStartQuiz"
+            @start-quiz="startQuiz"
         />
 
         <QuizService
@@ -156,6 +156,7 @@ export default {
             :number-of-questions="numberOfQuestions"
             :difficulty="difficulty"
             :number-of-options="numberOfOptions"
+            @reset-quiz="backToForm"
         />
 
       </div>

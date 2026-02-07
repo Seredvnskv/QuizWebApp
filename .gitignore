@@ -1,0 +1,43 @@
+# API Keys and Secrets
+*.bak
+*.tmp
+# Temporary files
+
+*.log
+# Logs
+
+*~
+*.swo
+*.swp
+Thumbs.db
+.DS_Store
+# OS
+
+frontend/yarn-error.log*
+frontend/yarn-debug.log*
+frontend/npm-debug.log*
+frontend/.env.local
+frontend/dist/
+frontend/node_modules/
+# Frontend - Node
+
+backend/mvnw.cmd
+backend/mvnw
+backend/.mvn/
+backend/target/
+# Backend - Maven
+
+.vscode/
+# IDE - VS Code
+
+out/
+*.ipr
+*.iws
+*.iml
+.idea/
+# IDE - IntelliJ IDEA
+
+.env.production
+.env.local
+*.env
+

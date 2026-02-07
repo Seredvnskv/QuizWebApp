@@ -61,6 +61,10 @@ export default {
 
       const chart = new ApexCharts(document.querySelector("#chart"), options);
       chart.render();
+    },
+
+    resetQuiz() {
+      this.$emit('reset-quiz');
     }
   }
 }
@@ -77,6 +81,13 @@ export default {
     <h3>Summary</h3>
     <p>You answered <strong>{{ results.correct }}</strong> out of <strong>{{ results.totalQuestions }}</strong> questions correctly.</p>
     <p v-if="results.unanswered > 0">You left <strong>{{ results.unanswered }}</strong> question(s) unanswered.</p>
+
+    <button
+      @click="resetQuiz"
+      class="btn-reset"
+    >
+      Reset
+    </button>
   </div>
 </template>
 
@@ -108,8 +119,32 @@ export default {
 }
 
 .result-summary strong {
-  color: #667eea;
+  color: #c8770b;
   font-weight: 600;
+}
+
+.btn-reset {
+  margin-top: 20px;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #cb4e4e 0%, #c2a210 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-reset:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-reset:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
 }
 </style>
 
