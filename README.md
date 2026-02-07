@@ -21,6 +21,8 @@ An AI-powered quiz generation application that creates custom quizzes on any top
 QuizAI is a full-stack application that generates educational quizzes using AI. Users specify a topic, number of questions, difficulty level, and options per question.
 
 ![QuizAI Overview](docs/images/QuizOverview.png)
+![QuizAI Quiz](docs/images/QuizExample.png)
+![QuizAI Analytics](docs/images/QuizAnalytics.png)
 
 ## Features
 
