@@ -37,6 +37,7 @@ out/
 .idea/
 # IDE - IntelliJ IDEA
 
+.env
 .env.production
 .env.local
 *.env

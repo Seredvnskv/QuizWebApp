@@ -11,6 +11,8 @@ An AI-powered quiz generation application that creates custom quizzes on any top
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Running the Application](#running-the-application)
+  - [With Docker (recommended)](#-with-docker-recommended)
+  - [Without Docker (manual)](#-without-docker-manual)
 - [API Documentation](#api-documentation)
 - [Development](#development)
 - [Deployment](#deployment)
@@ -63,6 +65,7 @@ QuizAI is a full-stack application that generates educational quizzes using AI. 
 - Maven 3.6+
 - Node.js 14+ and npm
 - Groq API Key ([Get one here](https://console.groq.com/))
+- **Docker & Docker Compose** (optional, but recommended for easy startup)
 
 ## Installation
 
@@ -108,7 +111,37 @@ The frontend connects to the backend at `http://localhost:8080` by default. Modi
 
 ## Running the Application
 
-### Start Backend Server
+### With Docker (recommended)
+
+The easiest way to run the entire application (frontend + backend) with a single command.
+
+**Requirements:** [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running.
+
+#### 1. Set up your API key
+
+Create a `.env` file in the **root** of the project (next to `docker-compose.yml`):
+
+```
+GROQ_API=your-groq-api-key-here
+```
+
+> This file is already listed in `.gitignore` – your key will **not** be committed to git.
+
+Alternatively, if `GROQ_API` is already set as a system environment variable, the `.env` file is not needed.
+
+#### 2. Build and start all containers
+
+```bash
+docker-compose up --build
+```
+
+#### 3. Access the application
+
+Open your browser: **http://localhost**
+
+### Without Docker (manual)
+
+#### Start Backend Server
 
 ```bash
 cd backend
@@ -117,7 +150,7 @@ mvn spring-boot:run
 
 The backend will start on **http://localhost:8080**
 
-### Start Frontend Server
+#### Start Frontend Server
 
 ```bash
 cd frontend
@@ -126,7 +159,7 @@ npm run serve
 
 The frontend will start on **http://localhost:8081**
 
-### Access the Application
+#### Access the Application
 
 Open your browser: `http://localhost:8081`
 
@@ -205,9 +238,17 @@ npm run build
 
 ## Deployment
 
-### Backend
+### Docker (recommended)
 
-Build and deploy:
+```bash
+echo "GROQ_API=your-api-key-here" > .env
+
+docker-compose up --build -d
+```
+
+Application available at **http://localhost** (port 80).
+
+### Backend (manual)
 ```bash
 cd backend
 mvn clean package
@@ -219,7 +260,7 @@ Set environment variable on server:
 export GROQ_API=your-api-key-here
 ```
 
-### Frontend
+### Frontend (manual)
 
 Build and deploy:
 ```bash
